@@ -5,7 +5,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class LeagueInvaders {
-	JFrame frame = new JFrame();
+	JFrame frame;
 	GamePanel gamepanel;
 	final int HEIGHT = 800;
 	final int WIDTH = 500;
@@ -18,9 +18,11 @@ LeagueInvaders(){
 		gamepanel = new GamePanel();
 }
 private void setup() {
+	frame.add(gamepanel);
 	JPanel panel = new JPanel();
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	panel.setVisible(true);
 	frame.setVisible(true);
 }
 }
+					//PT2, step 12
