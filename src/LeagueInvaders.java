@@ -1,3 +1,4 @@
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -7,8 +8,9 @@ import javax.swing.JPanel;
 public class LeagueInvaders {
 	JFrame frame;
 	GamePanel gamepanel;
-	final int HEIGHT = 800;
-	final int WIDTH = 500;
+	final static int HEIGHT = 800;
+	final static int WIDTH = 500;
+	
 public static void main(String[] args) {
 LeagueInvaders leagueInvaders = new LeagueInvaders();
 leagueInvaders.setup();
@@ -19,10 +21,10 @@ LeagueInvaders(){
 }
 private void setup() {
 	frame.add(gamepanel);
-	JPanel panel = new JPanel();
+	gamepanel.setPreferredSize(new Dimension(WIDTH,HEIGHT));
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	panel.setVisible(true);
 	frame.setVisible(true);
+	frame.pack();
 }
 }
 					//PT2, step 12
