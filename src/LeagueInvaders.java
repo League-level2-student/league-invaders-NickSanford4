@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 
 public class LeagueInvaders {
 	JFrame frame;
-	GamePanel gamepanel;
+	GamePanel gamePanel;
 	final static int HEIGHT = 800;
 	final static int WIDTH = 500;
 	
@@ -17,14 +17,16 @@ leagueInvaders.setup();
 }
 LeagueInvaders(){
 		frame = new JFrame();
-		gamepanel = new GamePanel();
+		gamePanel = new GamePanel();
 }
 private void setup() {
-	frame.add(gamepanel);
-	gamepanel.setPreferredSize(new Dimension(WIDTH,HEIGHT));
+	frame.add(gamePanel);
+	frame.addKeyListener(gamePanel);
+	gamePanel.setPreferredSize(new Dimension(WIDTH,HEIGHT));
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	frame.setVisible(true);
 	frame.pack();
 }
 }
-					//PT2, step 12
+					
+//MODEL
