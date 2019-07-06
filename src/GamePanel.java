@@ -16,10 +16,12 @@ GamePanel(){
 	Timer FrameDraw;
 	FrameDraw=new Timer(1000/60,this);
 	FrameDraw.start();
+	ship=new Rocketship(250,700,50,50);
 }
 final int MENU = 0;
 final int GAME = 1;
 final int END = 2;
+Rocketship ship;
 int currentState = MENU;
 void updateMenuState() {  }
 void updateGameState() {  }
@@ -37,6 +39,7 @@ g.drawString("Press SPACE For Instructions", 85, 520);
 }
 void drawGameState(Graphics g) {{g.setColor(Color.BLACK);
 g.fillRect(0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT);
+ship.draw(g);
 }}
 void drawEndState(Graphics g)  {{g.setColor(Color.RED);
 g.fillRect(0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT);
@@ -93,15 +96,15 @@ public void keyPressed(KeyEvent e) {
 	    }
 	}   
 	if (e.getKeyCode()==KeyEvent.VK_UP) {
-	    System.out.println("UP");
+	    ship.up();
 	}if (e.getKeyCode()==KeyEvent.VK_DOWN) {
-	    System.out.println("DOWN");
+	    ship.down();
 	}
 	if (e.getKeyCode()==KeyEvent.VK_LEFT) {
-	    System.out.println("LEFT");
+	    ship.left();
 	}
 	if (e.getKeyCode()==KeyEvent.VK_RIGHT) {
-	    System.out.println("RIGHT");
+	    ship.right();
 	}
 }
 @Override
@@ -113,6 +116,7 @@ public void keyReleased(KeyEvent e) {
 
 	
 }
+
 
 
 //MODEL
