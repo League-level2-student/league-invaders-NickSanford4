@@ -10,24 +10,29 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 public class GamePanel extends JPanel implements ActionListener, KeyListener {
-
+final int MENU = 0;
+	final int GAME = 1;
+	final int END = 2;
+	ObjectManager om;
+	Rocketship ship;
+	int currentState = MENU;
+	
+	
 	GamePanel() {
 		Timer FrameDraw;
 		FrameDraw = new Timer(1000 / 60, this);
 		FrameDraw.start();
 		ship = new Rocketship(250, 700, 50, 50);
+		om = new ObjectManager(ship);
 	}
-
-	final int MENU = 0;
-	final int GAME = 1;
-	final int END = 2;
-	Rocketship ship;
-	int currentState = MENU;
+	
+	
 
 	void updateMenuState() {
 	}
 
 	void updateGameState() {
+		om.update();
 	}
 
 	void updateEndState() {
@@ -49,7 +54,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		{
 			g.setColor(Color.BLACK);
 			g.fillRect(0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT);
-			ship.draw(g);
+			om.Draw(g);
 		}
 	}
 

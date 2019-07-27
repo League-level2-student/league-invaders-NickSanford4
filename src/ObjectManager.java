@@ -1,3 +1,4 @@
+import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -13,6 +14,25 @@ this.ship = ship;
 		aliens.add(new Alien(random.nextInt(LeagueInvaders.WIDTH),0,50,50));
 	}
 	void update() {
+		for (int i = 0; i < aliens.size() ; i++) {
+			if(aliens.get(i).y>LeagueInvaders.HEIGHT) {
+				aliens.get(i).isActive=false;
+			}
+		}
 		
 	}
+	void Draw(Graphics g) {
+		ship.draw(g);
+		for (int i = 0; i < aliens.size() ; i++) {
+		aliens.get(i).draw(g);
+		}
+	}
+	void purgeObjects() {
+		for(int i = aliens.size()-1; i >=0; i--) {
+		if (aliens.get(i).isActive = false) {
+			aliens.remove(i);
+		}
+		}
+	}
+	
 }
