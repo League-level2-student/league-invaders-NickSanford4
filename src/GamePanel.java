@@ -45,6 +45,10 @@ Timer alienSpawn;
 
 	void updateGameState() {
 		om.update();
+		if (ship.isActive==false) {
+			currentState=END;
+			alienSpawn.stop();
+		}
 	}
 
 	void updateEndState() {
@@ -58,12 +62,11 @@ Timer alienSpawn;
 		g.drawString("LEAGE INVADERS", 40, 100);
 		g.setFont(enter);
 		g.setColor(Color.magenta);
-		g.drawString("Press ENTER To Start", 120, 300);
-		g.drawString("Press SPACE For Instructions", 85, 520);
+		g.drawString("Press ENTER to Start", 120, 300);
+		g.drawString("Press SPACE for Instructions", 85, 520);
 	}
 
 	void drawGameState(Graphics g) {
-		
 			g.drawImage(image, 0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT, null);
 			om.Draw(g);
 		
@@ -78,8 +81,8 @@ Timer alienSpawn;
 			g.drawString("GAME OVER", 80, 100);
 			g.setFont(enter);
 			g.setColor(Color.yellow);
-			g.drawString("You Killed _ Enemies", 125, 300);
-			g.drawString("Press Enter To Start", 125, 520);
+			g.drawString("You Killed "+om.getScore()+" Enemies", 125, 300);
+			g.drawString("Press Enter to go to Home", 125, 520);
 
 		}
 
@@ -123,6 +126,10 @@ Timer alienSpawn;
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
 		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+			if (currentState == END) {
+				ship = new Rocketship(250, 700, 50, 50);
+				om.setShip(ship);
+			}
 			if (currentState == END) {
 				currentState = MENU;
 			} else {
